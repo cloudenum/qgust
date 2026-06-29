@@ -146,15 +146,17 @@ ordered set $(C, \prec)$ — a causal set. Events are primitive; geometry is eme
 
 **Axiom 2 (CCR Algebra).** Each causal set $C$ defines a $\mathrm{C}^*$-algebra
 $\mathcal{A}_{\text{CCR}}(C)$: the Weyl algebra of the free scalar field on the
-symplectic space $(V(C), \Delta)$, where $\Delta = i(C_{ij} - C_{ji})$ is the
-discretized Pauli-Jordan operator (the symplectic form, absorbing the standard
-$i$ factor from the field commutator $[\phi(x), \phi(y)] = i\Delta(x,y)$).  Nested subcausets $R \subset C$ give isotonous
+symplectic space $(V(C), \Delta)$, where $\Delta = C_{ij} - C_{ji}$ is the
+discretized Pauli-Jordan commutator function (real antisymmetric; the field
+commutator is $[\phi_i, \phi_j] = i\Delta_{ij}$, so the $i$ lives in the
+commutation relation, not in $\Delta$).  Nested subcausets $R \subset C$ give isotonous
 embeddings $\mathcal{A}_{\text{CCR}}(R) \hookrightarrow \mathcal{A}_{\text{CCR}}(C)$.
 Spacelike-separated subcausets give commuting subalgebras.
 
 **Axiom 3 (Distinguished State).** The SJ vacuum $\omega_0$ is the unique pure
-Gaussian state on $\mathcal{A}_{\text{CCR}}(C)$ selected by geometric quantization
-of $(V, \Delta)$. It satisfies the entropic purity condition (Jones 2024). The
+Gaussian state on $\mathcal{A}_{\text{CCR}}(C)$ selected by the
+Hawkins--Minz--Rejzner geometric quantization of $(V, \Delta)$ together with the
+Jones (2024) entropic purity condition. The
 **von Neumann algebra** of the causal set is the double commutant of the GNS
 representation:
 $$ \mathcal{A}(C) = \pi_{\omega_0}(\mathcal{A}_{\text{CCR}}(C))'' $$
@@ -277,9 +279,10 @@ realization-averaged statement).
 ### 3.3 The Pauli--Jordan Operator
 
 For a massless free scalar field on the causal set, the discretized Pauli--Jordan
-function is:
+function (the real antisymmetric commutator function, with the $i$ carried by the
+field algebra $[\phi_i, \phi_j] = i\Delta_{ij}$) is:
 
-$$ \Delta = i\,(C - C^{\mathsf T}) $$
+$$ \Delta = C - C^{\mathsf T} $$
 
 This is a real antisymmetric $N \times N$ matrix.  Its nonzero eigenvalues come in
 pairs $\pm i\lambda_k$ where $\lambda_k > 0$.
@@ -393,7 +396,11 @@ The parameter $\beta$ is **not** free: the observer's proper temperature is
 determined by the black hole mass via $T_{\text{Hawking}} = 1/(8\pi G M)$,
 so $\beta = 1/T_{\text{Hawking}}$ in physical units.  In the 2D diamond
 example, the $\beta$ that reproduces the Bekenstein--Hawking entropy is
-$\beta = 2\pi/\kappa$ where $\kappa$ is the surface gravity.  The Tomita--Takesaki
+$\beta = 2\pi/\kappa$ where $\kappa$ is the surface gravity.  This is a
+**consistency check**: the framework admits a thermal state whose inverse
+temperature matches the known Hawking temperature, but it does **not**
+derive $S = A/4G\hbar$ from first principles — that relation is an input
+via the generalized entropy formula (Axiom 5).  The Tomita--Takesaki
 theorem fixes the modular temperature of the *vacuum state* at $T_{\text{mod}} =
 1/2\pi$; the physical observer's temperature is redshifted relative to this.
 
@@ -486,9 +493,11 @@ heights $O(1)$ in Planck units. **Confirmed.**
 
 **Status.** ✓ Verified analytically and numerically for $j \le 3/2$, $v \le 8$.
 
-### Prediction 2: Central Charge and SJ Vacuum Entropy
+### Prediction 2: SJ Vacuum Entropy Scaling (Discretization Diagnostic)
 
-**Claim.** $c_{\text{eff}}(N) = c_\infty + \alpha/\sqrt{N}$ with $c_\infty = 1$.
+**Claim (discretization diagnostic, not synthesis-specific).** $c_{\text{eff}}(N) = c_\infty + \alpha/\sqrt{N}$ with $c_\infty = 1$ — this is a property of
+the free-field SJ vacuum on a causal-set discretization, not a test of the
+synthesis's novel claims.
 
 **Numerical result** (this work).  The SJ vacuum entropy on 2D causal diamonds
 exhibits **volume-law scaling** $S \approx 0.272 \times n_R - 4.37$ (nats) at
@@ -528,7 +537,7 @@ Gaussian states (Saravani et al. 2014, Mathur & Surya 2019).  Reliable
 central charge extraction requires $N \gg 10^4$ or a mutual-information
 subtraction scheme.  The log term *cannot be excluded* by the available
 data (a pure volume-law fits the four $N$ values within statistical error),
-so its presence is asserted rather than confirmed.
+so we neither assert nor confirm its presence; it is merely not excluded.
 
 **Reconciliation with the area-law claim of Pillar I.**  The RT-type
 area law $S_A \propto L(\gamma_A)$ from Pillar I is a claim about
@@ -888,7 +897,7 @@ are mixed, and reporting them transparently is itself the point.
 |-------|--------|----------------------|--------------------------|-----------------------------------|
 | Axiom system | Proposed | No (dimension-independent) | No (framework postulate) | — |
 | UEC ($\S2.2$) | Conjecture (untested) | Yes (SU(2) area spectrum is input) | Likely (discretization affects $U$) | — |
-| Horizon-molecule bridge ($\S3.8$) | Conjecture (untested) | No (general entropy counting) | No (molecules are CST concept) | — |
+| Horizon-molecule bridge ($\S3.8$) | Conjecture (untested) | No (general entropy counting) | Partial (molecule side depends on CST discretization) | — |
 | Discrete entropy jumps (Pred 1) | ✓ Theorem | **Yes** — may not survive SL(2,ℂ) | No (SU(2) algebraic) | No (tests recoupling, not synthesis) |
 | Volume-law entropy (Pred 2) | ⚠️ Scale-limited | **No** (CST property) | **Yes** (Poisson sprinkling causes UV density) | No (tests CST discretization, not synthesis) |
 | GUE statistics (Pred 3) | ✗ Falsified | **No** (free-field property) | **No** (continuum modular spectrum is Poisson) | No (tests free-field integrability, not synthesis) |

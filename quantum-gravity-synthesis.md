@@ -45,7 +45,10 @@ tensor networks. When the intertwiners satisfy hyperinvariance (1-isometric + gl
 condition), the resulting Hyperinvariant $\mathrm{SU}(2)$-Invariant Tensors (HITs) exhibit:
 
 * **Entanglement--geometry correspondence:** $S_A \propto L(\gamma_A)$ — the
-  Ryu--Takayanagi formula emerges as an expectation value of the LQG length operator
+  Ryu--Takayanagi formula emerges as an expectation value of the LQG length
+  operator (in the 3D Euclidean context of Otto et al. the RT surface is 1D,
+  so its area equals its length; in 4D the relevant operator is the area
+  operator, used in the UEC below)
 * **Negative curvature from area eigenvalues:** The LQG area operator on HITs gives
   Poincaré disc quantum geometry
 * **Discrete corrections to holographic entropy from the LQG area spectrum**
@@ -223,12 +226,14 @@ to establish three ingredients:
    maps each SJ mode $k$ with eigenvalue $\lambda_k$ to an edge $e$ of $\Gamma$
    carrying spin $j_e$, identified via a discretized area operator
    $\hat{A}(\partial R)$.
-2. **Spectrum matching.** Show that the modular Hamiltonian eigenvalues
-   $\beta_k$ (from the symplectic eigenvalues $\nu_k$) equal the LQG length
-   operator eigenvalues up to a universal constant.  Numerical evidence
-   (Prediction 5 and the CG coefficient work) is consistent with this for
-   small spins, but a general proof requires showing $H_{\text{mod}} = \hat{L}(\gamma)$
-   on the entangling surface.
+ 2. **Spectrum matching.** Show that the modular Hamiltonian eigenvalues
+    $\beta_k$ (from the symplectic eigenvalues $\nu_k$) equal the LQG area
+    operator eigenvalues up to a universal constant.  Numerical evidence
+    (Prediction 5 and the CG coefficient work) is consistent with this for
+    small spins, but a general proof requires showing $H_{\text{mod}} = \hat{A}(\gamma)$
+    on the entangling surface (in the 3D Euclidean Otto-et-al. context this is
+    the length operator; in 4D it is the area operator — the conjecture is
+    framed for 4D, so the area operator is the correct target).
 3. **Algebra commutator verification.** Demonstrate that the unitary $U$ maps the
    CCR algebra $\mathcal{A}_{\text{CCR}}(R)$ to the spin-network observable algebra,
    preserving the commutation relations.  This reduces to checking that
@@ -804,7 +809,7 @@ status, annotated with what each test actually discriminates:
 | # | Test | Status | What It Discriminates | Key Finding |
 |---|------|--------|-----------------------|-------------|
 | 1 | Discrete entropy jumps | ✓ Verified | SU(2) recoupling theory (not synthesis-specific) | $S(k)$ shows 2--6 discrete steps per $(j,v)$ combination; step heights $O(1)$ from SU(2) recoupling |
-| 2 | Central charge $c_\infty=1$ | ⚠️ Scale-limited | CST discretization properties (not synthesis-specific) | Volume-law ($S \approx 0.272\,n_R$) dominates at $N \le 800$; $c=1$ extraction requires $N \gg 10^4$ |
+| 2 | SJ Vacuum Entropy Scaling | ⚠️ Scale-limited | CST discretization properties (not synthesis-specific) | Volume-law ($S \approx 0.272\,n_R$) dominates at $N \le 800$; $c=1$ scaling requires $N \gg 10^4$ |
 | 3 | GUE level statistics | ✗ **Falsified** (free SJ) | Free-field modular spectrum (falsified claim was a conjecture by Loftus, not framework-derived) | Modular spectrum is **Poisson** (KS=0.032); free SJ vacuum is integrable, not chaotic |
 | 4 | $T_{\text{cutoff}} \sim M^{-2/3}$ | ✓ Derived; ⚠️ Numerics blocked | Horizon molecule Boltzmann counting (component of synthesis) | Detailed derivation complete; 2D radial model cannot verify 4D exponent |
 | 5 | SU(2) fidelity bound $F \le 1-d_{\min}^{-2}$ | ✓ Verified | SU(2) CG identities (not synthesis-specific) | CG coefficient bugs found and fixed; all orthogonality checks pass |
@@ -896,8 +901,8 @@ are mixed, and reporting them transparently is itself the point.
 | Claim | Status | Gauge-group dependent? | Discretization dependent? | Tests the synthesis's connections? |
 |-------|--------|----------------------|--------------------------|-----------------------------------|
 | Axiom system | Proposed | No (dimension-independent) | No (framework postulate) | — |
-| UEC ($\S2.2$) | Conjecture (untested) | Yes (SU(2) area spectrum is input) | Likely (discretization affects $U$) | — |
-| Horizon-molecule bridge ($\S3.8$) | Conjecture (untested) | No (general entropy counting) | Partial (molecule side depends on CST discretization) | — |
+| UEC ($\S2.2$) | Conjecture (untested) | Yes (SU(2) area spectrum is input) | Likely (discretization affects $U$) | No (conjecture, untested) |
+| Horizon-molecule bridge ($\S3.8$) | Conjecture (untested) | No (general entropy counting) | Partial (molecule side depends on CST discretization) | No (conjecture, untested) |
 | Discrete entropy jumps (Pred 1) | ✓ Theorem | **Yes** — may not survive SL(2,ℂ) | No (SU(2) algebraic) | No (tests recoupling, not synthesis) |
 | Volume-law entropy (Pred 2) | ⚠️ Scale-limited | **No** (CST property) | **Yes** (Poisson sprinkling causes UV density) | No (tests CST discretization, not synthesis) |
 | GUE statistics (Pred 3) | ✗ Falsified | **No** (free-field property) | **No** (continuum modular spectrum is Poisson) | No (tests free-field integrability, not synthesis) |

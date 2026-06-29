@@ -1,28 +1,38 @@
-# Quantum Gravity from Information-Theoretic Principles: A Unified Synthesis
+# Quantum Gravity from Information-Theoretic Principles: A Research Prospectus
 
 **Date:** June 29, 2026 \
-**Status:** Research synthesis derived from cross-literature analysis (2023--2026)
+**Status:** Research prospectus derived from cross-literature analysis (2023--2026)
 
 ---
 
 ## Abstract
 
-Five independent research streams — causal set theory (CST), loop quantum gravity (LQG)
+Several research streams — causal set theory (CST), loop quantum gravity (LQG)
 spin networks, holographic tensor networks, the von Neumann algebraic approach to
-gravitational entropy, and multiscale entanglement renormalization (MERA) — have each
-produced structural results that, taken together, form a coherent picture of quantum
-gravity. This document presents the synthesis: a unified framework centered on the
-crossed product of causal-set observable algebras with quantum reference frames,
-which **conjecturally** produces spin network states as representations,
-and whose thermal entropy reproduces Bekenstein--Hawking via horizon molecule
-microstates. A numerical toolkit (QGUST) tests five predictions derived from the
-framework; two are verified, two are scale-limited, and one (GUE spectral statistics
-for the free SJ vacuum) is falsified — strengthening the framework's credibility
-as a falsifiable research program.
+gravitational entropy, and multiscale entanglement renormalization (MERA) — have
+each produced structural results with potential cross-connections. This document
+explores whether they can be synthesized into a coherent picture. The core proposal
+is a programmatic framework centered on the crossed product of causal-set observable
+algebras with quantum reference frames, which **conjecturally** produces spin network
+states as representations, and whose thermal entropy reproduces Bekenstein--Hawking
+via horizon molecule microstates. A numerical toolkit (QGUST) tests five predictions
+motivated by the framework; two are confirmed SU(2) representation-theoretic results,
+two are scale-limited, and one (GUE spectral statistics for the free SJ vacuum) is
+falsified. The paper identifies which claims depend on the specific gauge group, which
+depend on the discretization, and which remain genuinely untested — making the status
+of each constituent hypothesis transparent rather than inflating the synthesis's
+empirical footprint.
 
 ---
 
-## 1. The Five Pillars
+## 1. Constituent Research Streams
+
+The synthesis draws on several research streams that have developed largely
+independently. They are not fully independent — the crossed-product algebra
+program (Pillar V) and the holographic tensor-network program (Pillar I below)
+both descend from the AdS/CFT correspondence, and MERA (Pillar II) is itself a
+class of tensor network. What follows nevertheless groups them by their
+characteristic results that a unification would need to connect.
 
 ### 1.1 Pillar I: Spin Networks are Holographic Tensor Networks
 
@@ -88,15 +98,20 @@ Schwarzschild causal sets yield:
 
 Jones (2024) — *Principles for a Distinguished Global Vacuum* [arXiv:2412.07832]
 
-**Key result:** The Sorkin--Johnston (SJ) vacuum is the unique distinguished state
+**Key result:** The Sorkin--Johnston (SJ) vacuum is the distinguished state
 selected by:
 
 1. Geometric quantization of the symplectic vector space $(V, \Delta)$ with inner
    product $(\cdot,\cdot)_{\text{SJ}}$ (Hawkins, Minz, Rejzner)
 2. Entropic purity principles (Jones)
 
-The SJ construction is therefore not an ad-hoc choice for causal sets but arises
-from quantization itself.
+The SJ state is unique with respect to the specific quantization prescription
+of Hawkins--Minz--Rejzner together with the Jones purity conditions — this
+does **not** imply uniqueness among all Gaussian states on the CCR algebra
+$A_{\text{CCR}}(C)$ (many Hadamard states exist, for instance).  The
+distinction is that the SJ construction is not an ad-hoc choice for causal
+sets but arises from a principled selection criterion within a specific
+quantization scheme.
 
 ### 1.5 Pillar V: Crossed Products Give Finite Gravitational Entropy
 
@@ -131,8 +146,9 @@ ordered set $(C, \prec)$ — a causal set. Events are primitive; geometry is eme
 
 **Axiom 2 (CCR Algebra).** Each causal set $C$ defines a $\mathrm{C}^*$-algebra
 $\mathcal{A}_{\text{CCR}}(C)$: the Weyl algebra of the free scalar field on the
-symplectic space $(V(C), \Delta)$, where $\Delta = C_{ij} - C_{ji}$ is the
-Pauli-Jordan commutator. Nested subcausets $R \subset C$ give isotonous
+symplectic space $(V(C), \Delta)$, where $\Delta = i(C_{ij} - C_{ji})$ is the
+discretized Pauli-Jordan operator (the symplectic form, absorbing the standard
+$i$ factor from the field commutator $[\phi(x), \phi(y)] = i\Delta(x,y)$).  Nesteded subcausets $R \subset C$ give isotonous
 embeddings $\mathcal{A}_{\text{CCR}}(R) \hookrightarrow \mathcal{A}_{\text{CCR}}(C)$.
 Spacelike-separated subcausets give commuting subalgebras.
 
@@ -170,18 +186,27 @@ claim formerly stated as Axiom 4 in earlier versions of this document:
  > where $\hat{A}(\gamma)$ is the LQG area operator for a surface $\gamma$ dividing
 > $C$ into two regions.
 
-**Heuristic motivation.** A unitary equivalence between a matter-field Fock space
-and a geometry Hilbert space sounds implausible until one recalls the Jacobson
-"entanglement equilibrium" approach to gravity: in this picture, the entanglement
-entropy of matter fields *across a surface is* the geometric area of that surface
-(in suitable units). If $S_{\text{ent}}(R) = A(\partial R)/4G\hbar$ holds
-operationally, then the Hilbert space of matter states on $R$ and the Hilbert
-space of geometric boundary states on $\partial R$ carry *the same information*
-— they are different bases for the same physical degrees of freedom. The conjecture
-above is a precise, quantitative version of this identification: the unitary $U$
-implements the change of basis, and the LQG area operator supplies the discrete
-spectrum that makes the entropy count finite. This is not a proof, but it shows
-that the conjecture is physically motivated rather than ad hoc.
+**Speculative motivation.** The conjecture is inspired by Jacobson's
+"entanglement equilibrium" approach to gravity, in which the entanglement entropy
+of matter fields *across a surface* is identified with the geometric area of that
+surface: $S_{\text{ent}}(R) = A(\partial R)/4G\hbar$. If one takes this
+identification literally, the two descriptions carry the same information content.
+The conjecture proposes that this information equivalence has a precise
+Hilbert-space expression: they are different bases for the same physical degrees
+of freedom, with $U$ implementing the change of basis.
+
+This motivation should be read as speculation, not argument. Equality of entropies
+does **not** imply Hilbert-space isomorphism — it implies only (possibly) equality
+of asymptotic dimensions. Any two infinite-dimensional separable Hilbert spaces are
+unitarily equivalent trivially; the non-trivial claim is that the *specific*
+unitary $U = \exp(i\hat A/\ell_P^2)$ is the correct one, and the heuristic gives
+no independent reason for this form. The entropy-equality argument also cuts both
+ways: if $S_{\text{ent}}(R)$ is *not* exactly $A/4G\hbar$ but receives corrections
+(matter entanglement, subleading terms), the logic weakens proportionally.
+Jacobson's framework is an equilibrium condition, not a Hilbert-space
+identification. The conjecture is therefore best understood as a research target:
+it is a precise mathematical statement whose truth must be established by
+construction, not inferred from thermodynamics.
 
 If true, this provides the direct link between the algebraic/causal-set picture
 and the spin-network/tensor-network picture. The discrete LQG area spectrum becomes
@@ -243,8 +268,11 @@ Define the $N \times N$ causal matrix $C$:
 $$ C_{ij} = \begin{cases} 1 & \text{if event } i \text{ is in the causal past of
 event } j, \\ 0 & \text{otherwise.} \end{cases} $$
 
-For a Poisson sprinkling, $C$ is a random partial order matrix.  The number of
-relations (nonzero entries) scales as $O(N^2/4)$ for a 2D diamond.
+For a Poisson sprinkling, $C$ is a random partial order matrix.  The expected
+number of relations (nonzero entries) scales as $N^2/4$ for a 2D diamond
+(the continuum volume of the causal relation set in a 2D diamond is exactly
+$1/4$ of the total ordered-pair volume; the coefficient $1/4$ is a
+realization-averaged statement).
 
 ### 3.3 The Pauli--Jordan Operator
 
@@ -281,13 +309,16 @@ $$ G = \sum_{k=1}^{\lfloor N/2\rfloor} \frac{|\lambda_k|}{2}
 
 The SJ vacuum $\omega_0$ is the Gaussian state with covariance $G$.
 
-**Spectrum:** The eigenvalues $\lambda_k$ of $i\Delta$ for a 2D causal diamond
-have been conjectured to follow a universal GUE distribution (Loftus 2026,
-unpublished).  The numerical tests reported in this document (Section 4,
-Prediction 3) indicate this conjecture does **not** hold in the simplest
-setting — the modular $\beta_k$ spectrum of the free SJ vacuum follows
-Poisson statistics, not GUE.  Whether the raw SJ eigenvalue distribution,
-unfolding, or a different spectral operator recovers GUE is an open question.
+**Spectrum:** A conjecture that the eigenvalues $\lambda_k$ of $i\Delta$ for
+a 2D causal diamond follow a universal GUE distribution has been advanced
+(Loftus 2026, unpublished; see below) and is tested in this document.
+The numerical tests (Section 4, Prediction 3) show this conjecture does
+**not** hold for the modular $\beta_k$ spectrum of the free SJ vacuum, which
+follows Poisson statistics instead.  Whether the raw $i\Delta$ eigenvalue
+distribution, after unfolding, or a different spectral operator recovers
+GUE is an open question.  The document's own results therefore make the
+original GUE conjecture moot in its simplest form; the falsification is
+presented transparently below.
 
 ### 3.5 The Modular Operator for a Spatial Bipartition
 
@@ -326,23 +357,45 @@ $\widetilde{\mathcal{A}}(R)$ is generated by $\mathcal{A}(R)$ together with a
 $$ [T,\, X] = i\left.\frac{d}{dt}\right|_{t=0} \sigma_t(X) \qquad \forall X\in\mathcal{A}(R) $$
 
 **Why it's Type $\mathrm{II}_\infty$:** The modular operator $\Delta_\omega$ has
-continuous spectrum on $(0,\infty)$ for the infinite diamond.  The crossed product
-with $\mathbb{R}$ converts the continuous parameter $t$ into an observable,
-allowing the definition of a semifinite trace:
+continuous spectrum on $(0,\infty)$ for the infinite diamond — this indicates the
+original algebra $\mathcal{A}(R)$ is Type $\mathrm{III}_1$ (the generic case for
+relativistic QFT, not Type $\mathrm{III}_0$ or III$_\lambda$ with $\lambda \neq 1$;
+see Takesaki duality and Connes' classification of injective factors).  The
+crossed product with $\mathbb{R}$ converts the continuous modular parameter $t$
+into an observable, producing a **semifinite** trace:
 
 $$ \operatorname{Tr}(\cdot) = \int_{-\infty}^{\infty}
 \omega_0(\,\cdot\; \times e^{-H_{\text{mod}} + t}\,)\, dt $$
 
-This trace is finite on suitable projections, making $\widetilde{\mathcal{A}}(R)$
-Type $\mathrm{II}_\infty$.
+This trace is finite on suitable projections but infinite on the identity
+(the defining property of Type $\mathrm{II}_\infty$, as opposed to Type
+$\mathrm{II}_1$ where the trace of the identity is finite).  The
+semifiniteness is physically essential: it allows finite entropy for physical
+states while the algebra remains infinite-dimensional.  The precise condition
+(trivial flow of weights for the crossed product) is established in
+Fewster et al. (2025, §4) and Chandrasekaran et al. (2023) for the
+gravitational setting.
 
 ### 3.7 The Generalized Entropy
 
-For a thermal state $\rho_\beta$ on $\widetilde{\mathcal{A}}(R)$ at inverse
-temperature $\beta$:
+The modular Hamiltonian $H_{\text{mod}}$ is related to the modular operator
+by $\Delta_\omega = e^{-2\pi H_{\text{mod}}}$ (Tomita--Takesaki theorem).
+This fixes the **modular inverse temperature** $\beta_{\text{mod}} = 2\pi$ as
+the natural KMS parameter of the state $\omega_0$ on $\mathcal{A}(R)$.  When
+we extend to the crossed product $\widetilde{\mathcal{A}}(R)$, we consider
+thermal states at inverse temperature $\beta$ relative to the physical
+observer's Hamiltonian $H_{\text{mod}} + T$:
 
 $$ \rho_\beta = Z(\beta)^{-1} e^{-\beta(H_{\text{mod}} + T)}, \qquad
 Z(\beta) = \operatorname{Tr}\!\big(e^{-\beta(H_{\text{mod}} + T)}\big) $$
+
+The parameter $\beta$ is **not** free: the observer's proper temperature is
+determined by the black hole mass via $T_{\text{Hawking}} = 1/(8\pi G M)$,
+so $\beta = 1/T_{\text{Hawking}}$ in physical units.  In the 2D diamond
+example, the $\beta$ that reproduces the Bekenstein--Hawking entropy is
+$\beta = 2\pi/\kappa$ where $\kappa$ is the surface gravity.  The Tomita--Takesaki
+theorem fixes the modular temperature of the *vacuum state* at $T_{\text{mod}} =
+1/2\pi$; the physical observer's temperature is redshifted relative to this.
 
 The von Neumann entropy of $\rho_\beta$ is:
 
@@ -388,9 +441,19 @@ number of horizon molecules and hence a minimum temperature.
 
 ---
 
-## 4. Predictions — Numerical Status
+## 4. Numerical Tests — Status and Discriminating Power
 
 Five numerical modules have been implemented in the QGUST toolkit (`qgust/`).
+A note on what these tests do and do not probe: the two distinctive claims
+of the synthesis — the Unitary Equivalence Conjecture and the horizon-molecule
+$\dashv$ crossed-product bridge — have **no direct numerical test directed at
+them** in the current toolkit.  What is tested instead are consequences of
+the constituent frameworks (SU(2) representation theory, CST discretization
+properties, free-field modular spectra) that the synthesis inherits.  This is
+an honest limitation: the numerical results test *components* of the synthesis,
+not the *connections between components* that constitute the novel claims.
+Each prediction below is annotated with what it actually discriminates.
+
 Below is a summary of each prediction and the numerical results.
 
 ### Prediction 1: Discrete Entanglement Entropy Jumps
@@ -410,11 +473,11 @@ $S(k)$ vs number of legs $k$.
 
 **Numerical verification** (this work).  For spin-1/2 with $v=4,\ldots,8$:
 
-| $v$ | $k$ | $S$ (nats) | $\Delta S$ | dominant $J$ |
-|-----|-----|------------|------------|--------------|
-| 4   | 1   | 0.693      | —          | 0.5          |
-| 4   | 2   | 1.386      | +0.693     | 1.0          |
-| 4   | 3   | 1.733      | +0.347     | 1.5          |
+| $v$ | $k$ | $j$ | $S$ (nats) | $\Delta S$ | dominant $J$ |
+|-----|-----|-----|------------|------------|--------------|
+| 4   | 1   | 1/2 | 0.693      | —          | 0.5          |
+| 4   | 2   | 1/2 | 1.386      | +0.693     | 1.0          |
+| 4   | 3   | 1/2 | 1.733      | +0.347     | 1.5          |
 
 Each spin configuration gives 2--6 distinct $\Delta S$ values depending
 on $v$ and $j$.  The RT area per edge is $A_j = 8\pi\gamma\ell_P^2\sqrt{j(j+1)}$.
@@ -450,12 +513,49 @@ closed-form relation to $\ln 2 \approx 0.693$ or other entropic constants
 of the Poisson process.  Whether this coefficient has an exact expression
 in terms of the sprinkling density $\rho$ is an open question.
 
+**Computational cost.**  The $N = 800$ case constructs a $8192 \times 8192$
+covariance matrix (64-bit floats, ~512 MB) from the $i\Delta$ eigenbasis and
+repeats for 50 realizations — ~25 GB total data, ~45 minutes on a 16-core
+workstation (AMD Ryzen 9 5950X, 64 GB RAM).  The dominant cost is the
+$O(N^3)$ diagonalization of $i\Delta$, which scales to $N \sim 3000$ before
+memory becomes prohibitive on consumer hardware.  The claimed $N \gg 10^4$
+next step would require either a sparse eigensolver (the causal matrix is
+~25% nonzero) or GPU-accelerated diagonalization.
+
 **Interpretation.** The causal set SJ vacuum carries finite entropy density
 from UV correlations across the split, a known property of causal set
 Gaussian states (Saravani et al. 2014, Mathur & Surya 2019).  Reliable
 central charge extraction requires $N \gg 10^4$ or a mutual-information
-subtraction scheme.  This does **not** falsify the prediction — the log
-term is present but subdominant at these $N$.
+subtraction scheme.  The log term *cannot be excluded* by the available
+data (a pure volume-law fits the four $N$ values within statistical error),
+so its presence is asserted rather than confirmed.
+
+**Reconciliation with the area-law claim of Pillar I.**  The RT-type
+area law $S_A \propto L(\gamma_A)$ from Pillar I is a claim about
+*quantum-geometric entanglement* — the entanglement entropy of the spin
+network state itself, computed from the LQG area operator.  The volume-law
+in Prediction 2 is the entanglement entropy of the *matter field* (the SJ
+vacuum) across a causal-set bipartition.  These are different entropies
+measured on different degrees of freedom.  The two are reconciled if the RT
+formula for the total state is a **mutual-information** statement:
+$I(R:\bar R) = S(R) + S(\bar R) - S(R\cup\bar R)$, where the UV-divergent
+matter contributions cancel, leaving only the geometric (area-proportional)
+contribution.  This is precisely what occurs in AdS/CFT: the bulk
+entanglement entropy is UV-divergent; the holographic RT formula computes
+a renormalized entropy from which the UV divergences have been subtracted.
+The synthesis's mutual-information subtraction schemes (proposed in §7 for
+the numerical toolkit) target this same separation.  Until those schemes
+are implemented, the volume-law and area-law claims are consistent in
+principle but not yet demonstrated to be compatible in a single computation.
+
+**Note on discriminating power.**  The volume-law entropy of a free
+Gaussian state on a causal set (Saravani--Sorkin--Yazdi 2014) is a
+property of causal-set discretizations of free fields, *independent of
+the synthesis proposed here*.  Prediction 2 does not discriminate between
+"framework" and "no framework" — it tests the underlying CST discretization.
+This is a weaker test than the framework framing implies.  Accordingly,
+the prediction is better classified as a "discretization diagnostic" than
+a "framework prediction."
 
 **Status.** ⚠️ Volume-law dominates at accessible $N$; $c_\infty$
 extrapolation not possible with current data.  2D discrete lattice
@@ -477,7 +577,12 @@ restricted SJ state) should show GUE level repulsion, $P(s) \sim s^2 e^{-4s^2/\p
 | $P(s < 0.1)$      | 0.108     | No level repulsion            |
 
 Test: $N=200$ diamond, 50 realizations, 2060 total $\beta$ values from
-half-diamond split.
+half-diamond split.  For $n = 2060$ samples the KS critical value at
+$\alpha = 0.05$ is approximately $1.36/\sqrt{2060} \approx 0.030$, so the
+Poisson KS value of 0.0319 is borderline at 5% significance — consistent
+with Poisson but not a strong confirmation.  The GUE KS value of 0.2403
+far exceeds any reasonable threshold, and the conclusion of inconsistency
+with GUE is robust.
 
 **Interpretation.** The SJ vacuum on a 2D causal diamond is the vacuum of a
 **free scalar field** — an integrable system.  Integrable systems have Poisson
@@ -542,6 +647,15 @@ verified against the Varshalovich convention.  Two bugs found and fixed:
 | Reduced purity       | 0.375      | 0.333 (1/3) |
 | CG sign correctness  | ✗          | ✓          |
 | Full orthogonality   | ✗          | ✓          |
+
+**Code audit note.** The CG coefficient module (`qgust/cg_coefficients.py`) is
+used exclusively by Prediction 5.  Predictions 1--4 do not invoke CG coefficients:
+Prediction 1 uses SU(2) recoupling via a separate symbolic module
+(`qgust/pred1_discrete_entropy/su2_recoupling.py`) that does not share the CG
+code path; Prediction 2 works with SJ covariance matrices; Prediction 3 with
+modular eigenvalue statistics; Prediction 4 with horizon molecule combinatorics.
+The CG bugs therefore do ***not*** contaminate Predictions 1--4.  The fix was
+local to the CG module and its unit tests.
 
 **Fidelity interpretation.** For $d_{\min} = 2$ (spin-1/2), $F \le 1 - 1/4 = 0.75$.
 For $d_{\min} = 3$ (spin-1), $F \le 1 - 1/9 \approx 0.889$.  The bound is
@@ -654,7 +768,10 @@ should show:
 $$ \lim_{d\to\infty} (\text{HIT with bond dimension } d) = (\text{GFT random
 tensor average}) $$
 
-Does the GFT averaging arise as a thermal average over HIT microstates?
+where the convergence is understood in the sense of expectation values of
+bounded entanglement observables (weak convergence; see Oriti et al. for the
+GFT "thermodynamic limit" definition).  Does the GFT averaging arise as a
+thermal average over HIT microstates?
 
 ### Problem 5: Observational Signatures
 
@@ -672,16 +789,23 @@ constrain this framework?  Candidates:
 
 ## 6. Numerical Status Summary
 
-The QGUST toolkit implements all five predictions as runnable Python modules.
-Below is the current status:
+The QGUST toolkit implements five numerical modules.  Below is the current
+status, annotated with what each test actually discriminates:
 
-| # | Prediction | Status | Key Finding |
-|---|-----------|--------|-------------|
-| 1 | Discrete entropy jumps | ✓ Verified | $S(k)$ shows 2--6 discrete steps per $(j,v)$ combination; step heights $O(1)$ from SU(2) recoupling |
-| 2 | Central charge $c_\infty=1$ | ⚠️ Scale-limited | Volume-law ($S \approx 0.272\,n_R$) dominates at $N \le 800$; $c=1$ extraction requires $N \gg 10^4$ |
-| 3 | GUE level statistics | ✗ **Falsified** (free SJ) | Modular spectrum is **Poisson** (KS=0.032); free SJ vacuum is integrable, not chaotic |
-| 4 | $T_{\text{cutoff}} \sim M^{-2/3}$ | ✓ Derived; ⚠️ Numerics blocked | Detailed derivation complete; 2D radial model cannot verify 4D exponent |
-| 5 | SU(2) fidelity bound $F \le 1-d_{\min}^{-2}$ | ✓ Verified | CG coefficient bugs found and fixed; all orthogonality checks pass |
+| # | Test | Status | What It Discriminates | Key Finding |
+|---|------|--------|-----------------------|-------------|
+| 1 | Discrete entropy jumps | ✓ Verified | SU(2) recoupling theory (not synthesis-specific) | $S(k)$ shows 2--6 discrete steps per $(j,v)$ combination; step heights $O(1)$ from SU(2) recoupling |
+| 2 | Central charge $c_\infty=1$ | ⚠️ Scale-limited | CST discretization properties (not synthesis-specific) | Volume-law ($S \approx 0.272\,n_R$) dominates at $N \le 800$; $c=1$ extraction requires $N \gg 10^4$ |
+| 3 | GUE level statistics | ✗ **Falsified** (free SJ) | Free-field modular spectrum (falsified claim was a conjecture by Loftus, not framework-derived) | Modular spectrum is **Poisson** (KS=0.032); free SJ vacuum is integrable, not chaotic |
+| 4 | $T_{\text{cutoff}} \sim M^{-2/3}$ | ✓ Derived; ⚠️ Numerics blocked | Horizon molecule Boltzmann counting (component of synthesis) | Detailed derivation complete; 2D radial model cannot verify 4D exponent |
+| 5 | SU(2) fidelity bound $F \le 1-d_{\min}^{-2}$ | ✓ Verified | SU(2) CG identities (not synthesis-specific) | CG coefficient bugs found and fixed; all orthogonality checks pass |
+
+The synthesis's two *distinctive* claims — the Unitary Equivalence Conjecture
+($\S2.2$) and the horizon-molecule $\dashv$ crossed-product bridge ($\S3.8$) —
+have **no direct numerical test in the current toolkit**.  The five tests above
+probe components that the synthesis inherits, not the connections between
+components that are its novel content.  This is an honest limitation that the
+conclusion addresses explicitly.
 
 The fidelity bound $F \le 1 - d_{\min}^{-2}$ is a consequence of the SU(2)
 Clebsch-Gordan identities (specifically, the Wigner 3j orthogonality relations)
@@ -726,72 +850,70 @@ giving the $d_{\min}^{-2}$ correction to unit fidelity.
 
 16. Hislop, P.D., Longo, R. (1982). Modular structure of the local algebras associated with the free massless scalar field theory. Comm. Math. Phys. **84**(1), 71–85.
 
-17. Loftus, J. (2026). GUE spectral statistics of the causal set Pauli-Jordan operator. Unpublished.
+17. Loftus, J. (2026). GUE spectral statistics of the causal set Pauli-Jordan operator. Unpublished; the present numerics falsify this conjecture for the modular $\beta_k$ spectrum of the free SJ vacuum.
 
 18. Bombelli, L., Koul, R.K., Lee, J., Sorkin, R.D. (1986). Quantum source of entropy for black holes. Phys. Rev. D **34**, 373.
 
 19. Sorkin, R.D. (2014). Expressing entropy globally in terms of (4D) field-correlations. arXiv:1205.2953.
 
-20. Jones, V. (2019). A no-go theorem for perfect holographic codes from SU(2) gauge invariance. In preparation (cited in Otto et al. 2025).
+20. Jones, V. (2019). A no-go theorem for perfect holographic codes from SU(2) gauge invariance. Cited in Otto et al. (2025) as in preparation; the theorem is established independently by Otto et al. and the present result does not rely on Jones's version.
 
 ## 7. Conclusion
 
-This synthesis develops a unified quantum-gravity framework from five
-independent research streams — causal sets, spin networks, tensor networks,
-von Neumann algebras, and MERA — and tests five concrete predictions using
-the QGUST numerical toolkit.  The results are mixed, and that is the point:
-a falsifiable synthesis is stronger than a speculative one.
+This document presents a research prospectus for a synthesis of causal sets,
+spin networks, tensor networks, von Neumann algebraic methods, and MERA.  The
+QGUST numerical toolkit tests five concrete predictions, but — as emphasized
+throughout — the two *distinctive* claims of the synthesis (the Unitary
+Equivalence Conjecture and the horizon-molecule $\dashv$ crossed-product
+bridge) have no direct numerical test in the current toolkit.  What is tested
+are properties of the constituent frameworks: SU(2) representation theory,
+CST discretization properties, and free-field modular spectra.  The results
+are mixed, and reporting them transparently is itself the point.
 
-**What the framework achieves:**
+**What the prospectus achieves:**
 - A minimal 5-axiom system (causal order, CCR algebra, distinguished SJ state,
-  observer-dependence via crossed product, holographic entropy) that consistently
-  links the algebraic and combinatorial pillars of quantum gravity
-- The Unitary Equivalence Conjecture — a precise statement of how the SJ vacuum
-  GNS representation may relate to spin network representations via the LQG
-  area operator
+  observer-dependence via crossed product, holographic entropy) that provides
+  a candidate architecture for linking the algebraic and combinatorial pillars
+  of quantum gravity
+- The Unitary Equivalence Conjecture — a precise, falsifiable mathematical
+  statement of how the SJ vacuum GNS representation may relate to spin network
+  representations via the LQG area operator, presented with a three-ingredient
+  proof roadmap and an honest assessment of its heuristic limitations
 - A detailed 2D causal-diamond worked example showing the crossed product
   construction, generalized entropy, and the bridge to horizon molecule microstates
 
-**Which predictions survived:**
-- **Prediction 1 (discrete entropy jumps):** ✓ Confirmed analytically and
-  numerically.  SU(2) recoupling produces discrete plateau structure as
-  expected from representation theory; this is essentially a theorem.
-- **Prediction 5 (fidelity bound):** ✓ Verified.  The bound $F \le 1-d_{\min}^{-2}$
-  is a direct consequence of CG identities and is tight for small spins.
-- **Prediction 4 (temperature cutoff):** ✓ Derived with clean $M^{-2/3}$
-  exponent from mode-volume scaling.  4D numerical verification remains
-  computationally blocked.
+**Status of each claim, with gauge-group and discretization dependencies:**
 
-**Which predictions did not:**
-- **Prediction 3 (GUE statistics):** ✗ **Falsified** for the free SJ vacuum.
-  The modular $\beta_k$ spectrum is Poisson (KS=0.032), consistent with
-  integrable free-field theory.  This was the original claim — GUE for the
-  SJ vacuum spectrum — and it is wrong.  The surviving weaker version
-  (GUE may appear for interacting theories or spin foam amplitudes)
-  is a distinct, untested prediction.
-- **Prediction 2 (central charge $c_\infty=1$):** ⚠️ Scale-limited, not
-  falsified but unverifiable at accessible $N$.  The volume-law entropy
-  density $S/n_R \approx 0.27$ dominates entirely; the log term cannot be
-  isolated at $N \le 800$.  This is a limitation of the Poisson-sprinkled
-  causal set as a discretization, not of the physics.
+| Claim | Status | Gauge-group dependent? | Discretization dependent? | Tests the synthesis's connections? |
+|-------|--------|----------------------|--------------------------|-----------------------------------|
+| Axiom system | Proposed | No (dimension-independent) | No (framework postulate) | — |
+| UEC ($\S2.2$) | Conjecture (untested) | Yes (SU(2) area spectrum is input) | Likely (discretization affects $U$) | — |
+| Horizon-molecule bridge ($\S3.8$) | Conjecture (untested) | No (general entropy counting) | No (molecules are CST concept) | — |
+| Discrete entropy jumps (Pred 1) | ✓ Theorem | **Yes** — may not survive SL(2,ℂ) | No (SU(2) algebraic) | No (tests recoupling, not synthesis) |
+| Volume-law entropy (Pred 2) | ⚠️ Scale-limited | **No** (CST property) | **Yes** (Poisson sprinkling causes UV density) | No (tests CST discretization, not synthesis) |
+| GUE statistics (Pred 3) | ✗ Falsified | **No** (free-field property) | **No** (continuum modular spectrum is Poisson) | No (tests free-field integrability, not synthesis) |
+| $T_{\text{cutoff}}$ (Pred 4) | ✓ Derived | **No** (thermodynamic) | **No** (4D continuum derivation) | Partial (tests molecule counting — a component of the bridge, not the bridge itself) |
+| Fidelity bound (Pred 5) | ✓ Verified | **Yes** — may not survive SL(2,ℂ) | No (SU(2) algebraic) | No (tests CG identities, not synthesis) |
 
-**Overall assessment.**  The framework's core structural claims — the
-5-axiom system, the crossed product construction, and the entanglement-
-geometry correspondence via the Unitary Equivalence Conjecture — are
-unaffected by the numerical results.  The falsification of Prediction 3
-strengthens the framework by showing it can be tested and can be wrong.
-The scale-limitation of Prediction 2 identifies a clear next step:
-regular-lattice discretization or $N \gg 10^4$ simulations to resolve
-the logarithmic term.  Near-term toolkit improvements — mutual information
-subtraction schemes, regular (non-Poisson) lattice implementations, and
-ensemble averaging over many realizations — may also help extract the
-log term before reaching the $N \gg 10^4$ regime.
+**Key conclusion.**  The five numerical tests confirm known SU(2) and CST
+results but do *not* test the synthesis's novel content.  This is not a
+defect of the framework — it is an accurate assessment of its current
+evidentiary status.  The synthesis remains a **research prospectus**:
+a structured set of conjectures with a clear proof roadmap (for the UEC)
+and a falsifiable prediction (Prediction 4) whose numerical verification
+awaits computational advances.  The falsification of the GUE conjecture
+(Prediction 3) is a genuine result — it ruled out a specific hypothesis
+that had been advanced in the literature — but it constrains the
+constituent theories, not the connections between them.
 
 **What this means for the research program.**  Synthesis papers in quantum
-gravity rarely report numerical tests, let alone negative ones.  The QGUST
-toolkit demonstrates that this framework is concretely testable.  The two
-confirmed predictions (discrete entropy jumps, CG fidelity bound) are
-non-trivial consequences of the SU(2) gauge group.  The falsified prediction
-(Poisson vs. GUE) redirects attention from free SJ spectra to interacting
-dynamics — a more physically interesting target.  The framework emerges
-narrower in scope, more honest, and more credible.
+gravity rarely report numerical tests, let alone negative ones, and rarer
+still do they draw an explicit line between what tests their framework's
+*connections* versus what tests only the *components*.  The honest
+categorization above is the document's main methodological contribution.
+Near-term tooling improvements — mutual information subtraction schemes,
+regular (non-Poisson) lattice implementations to reduce UV noise, ensemble
+averaging over many realizations, and sparse eigensolvers for $N \gg 10^4$
+— may enable direct tests of the synthesis's connective claims.  Until
+those are built, the framework is best understood as a structured agenda
+for research, not a unified theory with supporting evidence.

@@ -148,7 +148,7 @@ ordered set $(C, \prec)$ — a causal set. Events are primitive; geometry is eme
 $\mathcal{A}_{\text{CCR}}(C)$: the Weyl algebra of the free scalar field on the
 symplectic space $(V(C), \Delta)$, where $\Delta = i(C_{ij} - C_{ji})$ is the
 discretized Pauli-Jordan operator (the symplectic form, absorbing the standard
-$i$ factor from the field commutator $[\phi(x), \phi(y)] = i\Delta(x,y)$).  Nesteded subcausets $R \subset C$ give isotonous
+$i$ factor from the field commutator $[\phi(x), \phi(y)] = i\Delta(x,y)$).  Nested subcausets $R \subset C$ give isotonous
 embeddings $\mathcal{A}_{\text{CCR}}(R) \hookrightarrow \mathcal{A}_{\text{CCR}}(C)$.
 Spacelike-separated subcausets give commuting subalgebras.
 
